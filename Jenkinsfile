@@ -31,13 +31,15 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "scp -i G:/Users/Admin/Downloads/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat9/webapps"
+                        bat "for /r %%f in (target\\*.war) do scp -i G:/Users/Admin/Downloads/tomcat-demo.pem "%%f" ec2-user@${params.tomcat_dev}:/var/lib/tomcat9/webapps"
+
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "scp -i G:/Users/Admin/Downloads/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat9/webapps"
+                        bat "for /r %%f in (target\\*.war) do scp -i G:/Users/Admin/Downloads/tomcat-demo.pem "%%f" ec2-user@${params.tomcat_prod}:/var/lib/tomcat9/webapps"
+
                     }
                 }
             }
