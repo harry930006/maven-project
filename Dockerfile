@@ -4,4 +4,4 @@ ADD ./webapp/target/*.war /usr/local/webapp/
 
 EXPOSE 8080
 
-CMD ["catalina.bat","run"]
+CMD ["catalina.sh","run"]
