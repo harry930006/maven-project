@@ -1,4 +1,4 @@
-pipelinep{
+pipeline{
     agent any
     tools{
         maven 'loacl maven'
